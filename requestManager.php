@@ -16,10 +16,10 @@ $r->config = new mivik_config();
 $r->config->parseFile($r->appBase.'/app/appConfig.ini');
 $r->args = new mivik_args();
 #app hook, allow other config files
-includeIfExists($r->appBase.'app/hook/configHook.php'); 
+includeIfExists($r->appBase.'/app/hook/01configHook.php'); 
 
 #app hook, entry point for app includes
-includeIfExists($r->appBase."/app/hook/includeHook.php"); 
+includeIfExists($r->appBase."/app/hook/02includeHook.php"); 
 
 #use sessions based on config value in app/appConfig.ini
 if($r->config->use_sessions == TRUE){
@@ -41,8 +41,8 @@ if($r->url->controller != NULL && $r->url->action != NULL){ #both provided in th
 	}
 }
 $r->args->post = $_POST;
-includeIfExists($r->appBase."/app/hook/appHook.php");
+includeIfExists($r->appBase."/app/hook/03appHook.php");
 
 $r->activeTemplate = $r->config->default_template;
 $r->actionOutput = bufferOutput($r->activeController, $r->activeAction);
-require $r->appBase."/app/template/{$r->activeTemplate}.php";
+require $r->appBase."/app/template/{$r->activeTemplate}.php"

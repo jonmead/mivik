@@ -7,6 +7,7 @@
 * file extensions by passing something like '*.inc.php'
 */
 function includePhpFilesInDir($path, $pattern='*.php'){
+	global $r;
 	if(is_dir($path)){
 		foreach (glob($path.'/'.$pattern) as $file) {
 			include_once ($file);
@@ -19,6 +20,7 @@ function includePhpFilesInDir($path, $pattern='*.php'){
 * @param string $path absolute path to a file
 */
 function includeIfExists($path){
+	global $r;
 	if(file_exists($path)){
 		include $path;
 	}
