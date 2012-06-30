@@ -45,4 +45,4 @@ includeIfExists($r->appBase."/app/hook/03appHook.php");
 
 $r->activeTemplate = $r->config->default_template;
 $r->actionOutput = bufferOutput($r->activeController, $r->activeAction);
-require $r->appBase."/app/template/{$r->activeTemplate}.php"
+require $r->appBase."/app/template/{$r->activeTemplate}.php";
