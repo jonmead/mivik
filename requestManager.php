@@ -1,11 +1,13 @@
 <?php
 #determine the real path for the application base directory
-#$mivik_appbase = str_replace("\\", "/", realpath(dirname(__FILE__)."/../"));
-include "$mivik_appbase/framework/lib/mivikGlobalFunctions.php";
+$mivik_appbase = str_replace("\\", "/", realpath(dirname($_SERVER['SCRIPT_FILENAME'])."/../"));
+$mivik_framebase = str_replace("\\", "/", realpath(dirname(__FILE__)));
+
+include "$mivik_framebase/lib/mivikGlobalFunctions.php";
 
 #framework includes
-includePhpFilesInDir("$mivik_appbase/framework/lib/interface");
-includePhpFilesInDir("$mivik_appbase/framework/lib/class");
+includePhpFilesInDir("$mivik_framebase/lib/interface");
+includePhpFilesInDir("$mivik_framebase/lib/class");
 
 # setup the mivik request object, this is automatically available as
 # $r in every template, action, and controller file
@@ -38,7 +40,7 @@ if($r->url->controller != NULL && $r->url->action != NULL){ #both provided in th
 		$r->activeController = $r->url->controller;
 		$r->activeAction = $r->url->action;
 	}elseif(!$r->config->serve_default_instead_of_404){
-		include $r->appBase."/framework/htm/404.php";
+		include $mivik_framebase."/htm/404.php";
 	}
 }
 $r->args->post = $_POST;
