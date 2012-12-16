@@ -18,14 +18,15 @@ $r->args = new mivik_args();
 #app hook, allow other config files
 includeIfExists($r->appBase.'/app/hook/01configHook.php'); 
 
-#app hook, entry point for app includes
-includeIfExists($r->appBase."/app/hook/02includeHook.php"); 
-
 #use sessions based on config value in app/appConfig.ini
 if($r->config->use_sessions == TRUE){
 	session_start();
 	$r->session = new mivik_session();
 }
+
+#app hook, entry point for app includes
+includeIfExists($r->appBase."/app/hook/02includeHook.php"); 
+
 $r->url = new mivik_url(isset($_SERVER['HTTPS'])?"https://":"http://". $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 #figure out what to serve based on the url and whether the view file exists
 # setup default action from appConfig.ini
@@ -41,6 +42,7 @@ if($r->url->controller != NULL && $r->url->action != NULL){ #both provided in th
 	}
 }
 $r->args->post = $_POST;
+$r->args->get = $_GET;
 includeIfExists($r->appBase."/app/hook/03appHook.php");
 
 $r->activeTemplate = $r->config->default_template;
