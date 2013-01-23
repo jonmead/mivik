@@ -68,12 +68,15 @@ class mivik_url{
 	public function getCssUrl($pathInCss){
 		return $this->baseUrl ."css/$pathInCss";
 	}
-	public function outputCssTag($pathInCss, $justReturnTheTag=FALSE){
-		$result = "<link rel='stylesheet' href='".$this->getCssUrl($pathInCss)."'/>\n";
+	public function outputCssTag($pathInCss, $justReturnTheTag=FALSE, $rel="stylesheet"){
+		$result = "<link rel='$rel' href='".$this->getCssUrl($pathInCss)."'/>\n";
 		if(!$justReturnTheTag){
 			echo $result;
 		}
 		return $result;
+	}
+	public function outputLessTag($pathInCss, $justReturnTheTag=FALSE){
+		return $this->outputCssTag($pathInCss, $justReturnTheTag, "stylesheet/less");
 	}
 	public function getJsUrl($pathInJs){
 		return $this->baseUrl ."js/$pathInJs";

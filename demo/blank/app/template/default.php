@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<!-- This is the easiest way to reference resources in public/js, public/css, and public/img -->
-		<!--<?php $r->url->outputCssTag("styles.css");?>-->
+		<!--<?php $r->url->outputCssTag("styles.less");?>-->
 		<!--<?php $r->url->outputImgTag("image.png", "alt text");?>-->
 		<!-- <?php $r->url->outputJsTag("script.js");?> -->
 	</head>

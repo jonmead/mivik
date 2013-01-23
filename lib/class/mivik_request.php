@@ -10,7 +10,7 @@ class mivik_request extends mivik_magicMembers{
 	public $activeTemplate;
 	public $appBase;
 	/**
-	 * 
+	 * s
 	 * @var mivik_config
 	 */
 	public $config;

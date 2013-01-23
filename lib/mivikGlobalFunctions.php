@@ -27,24 +27,6 @@ function includeIfExists($path){
 }
 
 /**
-* This can take a file or directory. If a directory is provided, all files with
-* a .php extension in the directory will be included. If it is a path to a file,
-* there is not requirement for a specific extension so if a file exists it will be
-* included in that case.
-* @param string $pathInAppLib relative path from {appBase}/app/lib/
-*/
-function includeLIbItem($pathInAppLib){
-	global $r;
-	$path = $r->appBase."/app/lib/{$pathInAppLib}";
-	if (file_exists($path)){
-		if(is_dir($path)){
-			includePhpFilesInDir($path);
-		}else{
-			include($path);
-		}
-	}
-}
-/**
  * Check if a string ends with the specified substring
 * @param string $needle search term
 * @param string $haystack string to search
@@ -84,5 +66,4 @@ function bufferOutput($controller, $action){
     	include ($viewFile);
     
     return ob_get_clean();
-    
 }

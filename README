@@ -1,5 +1,5 @@
 IMPORTANT: For security purposes, only public folders should be publically
 accessible.
 
-So, if your front controller is at ...path/mivik/myApplication/public/index.php,
+So, if your front controller is at /...path/mivik/myApplication/public/index.php,
 the only folder that should be accessible is the public folder and all subfolders.
